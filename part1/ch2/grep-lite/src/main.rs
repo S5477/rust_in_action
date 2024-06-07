@@ -8,11 +8,9 @@ fn main() {
 
     let mut line_num: usize = 1;
 
-    for line in quote.lines() {
+    for (i, line) in quote.lines().enumerate() {
         if line.contains(search_term) {
-            println!("{}: {}", line, line_num);
+            println!("{}: {}", line, i + 1);
         }
-
-        line_num += 1;
     }
 }
