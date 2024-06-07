@@ -1,7 +1,16 @@
 use regex::Regex;
+use clap::Parser;
 
+#[derive(Parser, Debug)]
+#[command(version, about, long_about = None)]
+struct Args {
+    #[arg[short, long]]
+    pattern: String,
+}
 fn main() {
-    let re = Regex::new("picture").unwrap();
+    let args = Args::parse();
+
+    let re = Regex::new(&*args.pattern).unwrap();
     let quote = "\
         Every face, every shop, beadroom window, public-house, and
         dark square is a picture feverishly turned--in search of what?
