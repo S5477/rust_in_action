@@ -1,16 +1,19 @@
+use regex::Regex;
+
 fn main() {
-    let search_term = "picture";
+    let re = Regex::new("picture").unwrap();
     let quote = "\
         Every face, every shop, beadroom window, public-house, and
         dark square is a picture feverishly turned--in search of what?
         It is the same with books.
         What do we seek through millions of pages?";
 
-    let mut line_num: usize = 1;
+    for line in quote.lines() {
+        let contains_substring = re.find(line);
 
-    for (i, line) in quote.lines().enumerate() {
-        if line.contains(search_term) {
-            println!("{}: {}", line, i + 1);
+        match contains_substring {
+            Some(_) => println!("{}", line),
+            None => {}
         }
     }
 }
