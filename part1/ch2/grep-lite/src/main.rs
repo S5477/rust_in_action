@@ -20,6 +20,7 @@ fn main() {
     for line in quote.lines() {
         let contains_substring = re.find(line);
 
+
         match contains_substring {
             Some(_) => println!("{}", line),
             None => {}
